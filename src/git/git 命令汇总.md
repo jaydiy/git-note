@@ -17,6 +17,9 @@ git remote add itwild git@github.com:itwild/flink.git
 # 查看远程仓库地址
 git remote -v
 
+# 查看远程库与本地分支的信息
+git remote show origin
+
 # 将本地当前分支推送到远程 itwild 仓库的 master 分支
 git push itwild master
 
@@ -64,6 +67,51 @@ git reset --soft commit_id
 
 ```
 
+储藏更改
+
+```bash
+# 储藏更改:将当前更改的代码储藏起来，等以后恢复使用
+git stash
+
+# 恢复的同时把 stash 内容删掉
+git stash pop
+
+# 通过 git stash list，查看本地所有的 stash,如果我要恢复第一个就执行
+git stash apply --index 0
+
+# 在上面操作的基础上，以此来删除stash
+git stash drop
+
+# 将 stash 空间清空
+git stash clear
+```
+
+版本回退
+
+```bash
+# 回退至上一个版本
+git reset --hard HEAD
+
+# 回退至指定版本
+git reset --hard <commit-id>
+
+# 查看以往版本号(本地的commit)
+git reflog
+
+# 查看各版本号及信息(所有的commit：本地commit + 其他同事的commit)
+git log
+```
+
+对已 push 版本进行回退
+
+```bash
+# 第一步：本地回退到指定的版本
+git reset --hard <commit-id>
+
+# 第二步：将远程的也回退到指定版本
+git push origin dev
+```
+
 从工作目录中删除所有没有tracked过的文件
 
 ```bash
@@ -94,8 +142,8 @@ git cherry-pick [<options>] <commit-ish>...
 
 ```bash
 # 本地打tag
-git tag -a release-1.11.2 -m 'Apache Flink 1.11.2'
-
+git tag -a release-1.11.2 -m 'Apache Flink 1.11.2' 34372b05(commit版本号)
+ 
 # 删除一个本地标签
 git tag -d <tagname>
 
@@ -107,6 +155,12 @@ git push itwild --tags
 
 # 删除一个远程标签
 git push itwild :refs/tags/<tagname>
+
+# 查询所有标签
+git tag
+
+# 查询标签详细信息
+git show v1.0.0
 ```
 
 ## git 配置多个 ssh-key
