@@ -1,0 +1,48 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 120
+
+[*.html]
+quote_type = double
+
+[*.vue]
+quote_type = single
+
+[*.{sass,scss,less,css}]
+quote_type = double
+
+[*.{js,ts}]
+indent_size = 2
+quote_type = single
+curly_bracket_next_line = false
+spaces_around_operators = true
+spaces_around_brackets = none
+
+[*.{json,yml,sql,tsx,jsx}]
+indent_size = 2
+
+[*.py]
+indent_size = 4
+
+[*.{xml,xsd}]
+indent_style = tab
+
+[*.md]
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{groovy,java,kt,kts}]
+indent_style = tab
+# 延续缩进大小。有助于区分代码块与延续行, 整数
+continuation_indent_size = 8

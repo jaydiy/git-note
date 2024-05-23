@@ -15,7 +15,7 @@
    node_modules
    dist
    package-lock.json
-   !.v
+   !.vscode/extensions.json
    ```
 
 1. 1
