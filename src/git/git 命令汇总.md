@@ -69,18 +69,36 @@ git reset --soft commit_id
 
 储藏更改
 
+> git stash 命令是一种在处理紧急任务、切换分支或需要暂时保存当前工作进度时的有力工具。通过理解和正确使用这些命令，可以大大提高工作效率和灵活性
+
 ```bash
 # 储藏更改:将当前更改的代码储藏起来，等以后恢复使用
 git stash
 
-# 恢复的同时把 stash 内容删掉
+# 命名 stash: 通过添加描述信息，可以更容易地辨别和管理多个 stash
+git stash save "修复 bug #42"
+
+# 恢复并删除最近的 stash
 git stash pop
+
+# 恢复并删除特定的 stash
+git stash pop stash@{n}
+
+# 应用最近一次的 stash，但不删除 stash 记录
+git stash apply
 
 # 通过 git stash list，查看本地所有的 stash,如果我要恢复第一个就执行
 git stash apply --index 0
 
-# 在上面操作的基础上，以此来删除stash
+# 应用特定的 stash
+
+git stash apply stash@{n}
+
+# 删除最近的 stash
 git stash drop
+
+# 删除特定的 stash
+git stash drop stash@{n}
 
 # 将 stash 空间清空
 git stash clear
@@ -143,7 +161,7 @@ git cherry-pick [<options>] <commit-ish>...
 ```bash
 # 本地打tag
 git tag -a release-1.11.2 -m 'Apache Flink 1.11.2' 34372b05(commit版本号)
- 
+
 # 删除一个本地标签
 git tag -d <tagname>
 
